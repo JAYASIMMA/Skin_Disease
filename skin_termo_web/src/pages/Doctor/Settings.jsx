@@ -26,7 +26,7 @@ const DoctorSettings = () => {
       // We need user ID, let's assume it's stored or we get it from token (for now using a placeholder or needing a 'me' endpoint)
       // Actually, let's use a "GET /doctor/me/profile" if it exists, or decode token.
       // Since I don't have user ID easily, I'll fetch by a placeholder or fix backend to support /me
-      const response = await fetch('http://127.0.0.1:8000/doctor/me/profile', {
+      const response = await fetch('http://127.0.0.1:3000/doctor/me/profile', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -47,7 +47,7 @@ const DoctorSettings = () => {
   const handleUpdate = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://127.0.0.1:8000/doctor/onboarding', {
+      const response = await fetch('http://127.0.0.1:3000/doctor/onboarding', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

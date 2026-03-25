@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // The Backend is running on port 8000
-const BACKEND_URL = 'http://127.0.0.1:8000';
+const BACKEND_URL = 'http://127.0.0.1:3000';
 
 export const analyzeSkinImage = async (base64Image) => {
   const token = localStorage.getItem('token');
@@ -17,11 +17,11 @@ export const analyzeSkinImage = async (base64Image) => {
   }
 };
 
-export const chatWithAI = async (messages) => {
+export const chatWithAI = async (messages, provider = 'zhipu') => {
   const token = localStorage.getItem('token');
   try {
     const response = await axios.post(`${BACKEND_URL}/chat/message`, 
-      { messages: messages },
+      { messages: messages, provider: provider },
       { headers: { Authorization: `Bearer ${token}` } }
     );
     return response.data.content;

@@ -214,7 +214,7 @@ const UserDatabase = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/admin/users');
+      const response = await fetch('http://127.0.0.1:3000/admin/users');
       if (response.ok) {
         const data = await response.json();
         setUsers(data || []);
@@ -234,7 +234,7 @@ const UserDatabase = () => {
     if (!window.confirm('Are you sure you want to revoke platform access for this user?')) return;
     
     try {
-      const response = await fetch(`http://127.0.0.1:8000/admin/users/${userId}`, {
+      const response = await fetch(`http://127.0.0.1:3000/admin/users/${userId}`, {
         method: 'DELETE'
       });
       if (response.ok) {
@@ -307,7 +307,7 @@ const SystemConfig = () => (
       </h3>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         {[
-          { label: 'Primary Backend', value: 'http://127.0.0.1:8000', type: 'REST' },
+          { label: 'Primary Backend', value: 'http://127.0.0.1:3000', type: 'REST' },
           { label: 'Vision AI Gateway', value: 'https://open.bigmodel.cn/v4', type: 'Flash' },
           { label: 'Ollama Instance', value: 'http://10.0.2.2:11434', type: 'Local' },
         ].map((api, i) => (

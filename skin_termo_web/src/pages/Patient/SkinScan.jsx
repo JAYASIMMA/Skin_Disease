@@ -75,7 +75,7 @@ const SkinScan = () => {
 
   const selectHistoryItem = (item) => {
     setResult(item);
-    setImage(`http://127.0.0.1:8000${item.image_url}`);
+    setImage(`http://127.0.0.1:3000${item.image_url}`);
     setShowHistory(false);
   };
 
@@ -112,7 +112,7 @@ const SkinScan = () => {
                   style={{ overflow: 'hidden', cursor: 'pointer', border: '1px solid var(--border)' }}
                   onClick={() => selectHistoryItem(item)}
                 >
-                  <img src={`http://127.0.0.1:8000${item.image_url}`} alt={item.disease_name} style={{ width: '100%', height: '180px', objectFit: 'cover' }} />
+                  <img src={`http://127.0.0.1:3000${item.image_url}`} alt={item.disease_name} style={{ width: '100%', height: '180px', objectFit: 'cover' }} />
                   <div style={{ padding: '16px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                       <h4 style={{ margin: 0 }}>{item.disease_name}</h4>

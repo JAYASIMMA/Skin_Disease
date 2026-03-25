@@ -11,7 +11,7 @@ const DoctorManagement = () => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/admin/doctors');
+      const response = await fetch('http://127.0.0.1:3000/admin/doctors');
       if (response.ok) {
         const data = await response.json();
         setDoctors(data);
@@ -31,7 +31,7 @@ const DoctorManagement = () => {
     setMessage({ text: '', type: '' });
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/auth/register', {
+      const response = await fetch('http://127.0.0.1:3000/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, role: 'doctor' }),
@@ -168,7 +168,7 @@ const DoctorManagement = () => {
                       const lat = prompt('Enter Latitude (e.g. 40.7128):', doc.profile?.latitude || '');
                       const lng = prompt('Enter Longitude (e.g. -74.0060):', doc.profile?.longitude || '');
                       if (lat && lng) {
-                        fetch(`http://127.0.0.1:8000/admin/doctor/${doc.id}/location`, {
+                        fetch(`http://127.0.0.1:3000/admin/doctor/${doc.id}/location`, {
                           method: 'PATCH',
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({ latitude: parseFloat(lat), longitude: parseFloat(lng) })

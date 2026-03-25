@@ -8,6 +8,7 @@ const AIChat = () => {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [provider, setProvider] = useState('zhipu');
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const AIChat = () => {
     setLoading(true);
 
     try {
-      const response = await chatWithAI([...messages, userMsg]);
+      const response = await chatWithAI([...messages, userMsg], provider);
       setMessages(prev => [...prev, { role: 'assistant', content: response }]);
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' }]);
@@ -37,9 +38,43 @@ const AIChat = () => {
 
   return (
     <div className="animate-fade-up" style={{ height: 'calc(100vh - 160px)', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ marginBottom: '24px' }}>
-        <h1 style={{ fontSize: '28px', marginBottom: '8px' }}>AI Skincare Assistant</h1>
-        <p style={{ color: 'var(--text-dim)' }}>Get instant answers to your skincare concerns.</p>
+      <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <h1 style={{ fontSize: '28px', marginBottom: '8px' }}>AI Skincare Assistant</h1>
+          <p style={{ color: 'var(--text-dim)' }}>Get instant answers to your skincare concerns.</p>
+        </div>
+        <div style={{ display: 'flex', background: 'var(--glass)', borderRadius: '12px', padding: '4px', border: '1px solid var(--border)' }}>
+          <button 
+            type="button"
+            onClick={() => setProvider('zhipu')}
+            style={{ 
+              padding: '8px 16px', 
+              borderRadius: '8px', 
+              background: provider === 'zhipu' ? 'var(--primary)' : 'transparent',
+              color: provider === 'zhipu' ? 'white' : 'var(--text-dim)',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+          >
+            GLM AI
+          </button>
+          <button 
+            type="button"
+            onClick={() => setProvider('ollama')}
+            style={{ 
+              padding: '8px 16px', 
+              borderRadius: '8px', 
+              background: provider === 'ollama' ? 'var(--primary)' : 'transparent',
+              color: provider === 'ollama' ? 'white' : 'var(--text-dim)',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+          >
+            Ollama (Dermo_ai)
+          </button>
+        </div>
       </div>
 
       <div className="glass-card" style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>

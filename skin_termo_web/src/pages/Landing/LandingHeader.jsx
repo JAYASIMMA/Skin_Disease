@@ -52,6 +52,12 @@ const LandingHeader = ({ activePage = 'home', forceScrolled = false }) => {
         >
           Portal
         </span>
+        <span 
+          className={`nav-link ${activePage === 'models' ? 'active' : ''}`} 
+          onClick={() => navigate('/models')}
+        >
+          Models
+        </span>
         <button 
           onClick={() => navigate('/login')} 
           className="btn-primary" 

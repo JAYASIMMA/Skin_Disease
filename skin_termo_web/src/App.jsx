@@ -11,6 +11,7 @@ import Features from './pages/Landing/Features';
 import Intelligence from './pages/Landing/Intelligence';
 import Network from './pages/Landing/Network';
 import Portal from './pages/Landing/Portal';
+import Models from './pages/Landing/Models';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/intelligence" element={<Intelligence />} />
         <Route path="/network" element={<Network />} />
         <Route path="/portal" element={<Portal />} />
+        <Route path="/models" element={<Models />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/patient/*" element={<PatientDashboard />} />
